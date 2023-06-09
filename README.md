@@ -15,9 +15,6 @@ You should create with flutter:
 
 ### Drawer Details
 it should contains titles and a number like this:
-> first category (20)
-> second category (1)
-> third category (464)
 > count (19)
 
  the titles and the numbers should be read from the **GET** endpoint.
