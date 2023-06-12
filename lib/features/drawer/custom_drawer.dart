@@ -4,6 +4,7 @@ import 'package:flutter_mobx/flutter_mobx.dart';
 
 import 'mobx/estate_data_mobx.dart';
 
+final stateMobx = EstateDataMobx();
 
 class CustomDrawer extends StatefulWidget {
   const CustomDrawer({Key? key}) : super(key: key);
@@ -13,11 +14,8 @@ class CustomDrawer extends StatefulWidget {
 }
 
 class _CustomDrawerState extends State<CustomDrawer> {
-  final estateMobx = EstateDataMobx();
-
   @override
   void initState() {
-    estateMobx.indexEstateData();
     super.initState();
   }
 
@@ -26,7 +24,7 @@ class _CustomDrawerState extends State<CustomDrawer> {
     return SafeArea(
       child: Drawer(
         child: DrawerBody(
-          mobx: estateMobx,
+          mobx: EstateDataMobx(),
         ),
       ),
     );

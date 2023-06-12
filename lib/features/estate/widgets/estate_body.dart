@@ -20,18 +20,36 @@ class _EstateBodyState extends State<EstateBody> {
     return Column(
       children: [
         const Spacer(),
-        Center(
-          child: Padding(
-            padding: const EdgeInsets.all(20.0),
-            child: FloatingActionButton.extended(
-              onPressed: () async {
-                estateMobx.incrementCounter(randomCount);
-                setState(() {
-                  randomCount = Random().nextInt(100);
-                });
-              },
-              label: Text('make count value $randomCount'),
-            ),
+        Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Column(
+            children: [
+              Center(
+                child: Padding(
+                  padding: const EdgeInsets.all(20.0),
+                  child: FloatingActionButton.extended(
+                    onPressed: () async {
+                      showDialog(
+                        context: context,
+                        builder: (context) => const Center(
+                          child: LinearProgressIndicator(),
+                        ),
+                      );
+                      await estateMobx.incrementCounter(randomCount);
+                      Navigator.pop(context);
+                      setState(() {
+                        randomCount = Random().nextInt(100);
+                      });
+                    },
+                    label: Text('make count value $randomCount'),
+                  ),
+                ),
+              ),
+              Visibility(
+                visible: false,
+                child: const LinearProgressIndicator(),
+              ),
+            ],
           ),
         ),
       ],

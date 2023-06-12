@@ -1,9 +1,12 @@
 import 'package:dio/dio.dart';
 import 'package:mobx/mobx.dart';
 
+import '../../drawer/mobx/estate_data_mobx.dart';
+
 part 'estate_mobx.g.dart';
 
 class EstateMobx = EstateBase with _$EstateMobx;
+final estateMobx = EstateDataMobx();
 
 abstract class EstateBase with Store {
   final dio = Dio();
@@ -17,5 +20,6 @@ abstract class EstateBase with Store {
         "count": count,
       },
     );
+    await estateMobx.indexEstateData();
   }
 }

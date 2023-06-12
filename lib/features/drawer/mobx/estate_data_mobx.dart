@@ -20,6 +20,7 @@ abstract class EstateDataBase with Store {
     try {
       final response = await dio.get(url);
       estate = EstateDataModel.fromJson(response.data);
+      print(estate);
     } on Exception catch (e) {
       debugPrint(e.toString());
     }
